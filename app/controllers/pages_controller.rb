@@ -11,7 +11,7 @@ class PagesController < ApplicationController
       redirect_to recipients_path
     else
       @errors = @user.errors.full_messages
-      render 'new'
+      render 'sign_up'
     end
   end
 
