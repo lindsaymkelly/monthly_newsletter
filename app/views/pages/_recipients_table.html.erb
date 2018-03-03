@@ -1,28 +1,15 @@
-<div class="text-center">
-  <h2> All Monthly Newsletter Recipients: </h2>
-</div>
 <div class="container">
-  <table id="myTable2" class="table table-bordered"> 
+  <table class="table table-bordered"> 
     <tr>
       <th onclick="sortTable(0)"> First Name </th>
       <th onclick="sortTable(1)"> Last Name </th>
-      <th onclick="sortTable(2)"> Email </th>
-      <th onclick="sortTable(3)"> Subscribed Since </th>
+      <th> Email </th>
+      <th> Subscribed Since </th>
     </tr>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%=user.firstname%></td>
-        <td><%=user.lastname%></td>
-        <td><%=user.email_address.email%></td>
-        <td><%=user.created_at.strftime("%b %d, %Y")%></td>
-      </tr>
-    <% end %>
+    <%= render partial: 'recipient_compact', collection: @users, as: :user %>
   </table>
 </div>
-<br>
-<div class="container text-center">
-  <%= link_to "Add New Subscription", sign_up_path, :class => "btn btn-primary btn-lg text-center" %>
-</div>
+
 
 <script>
 function sortTable(n) {
