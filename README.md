@@ -13,4 +13,4 @@
 
 ## Schema
 A bonus challenge to this assignment was to represent users and email addresses in separate tables to demonstrate a one-to-one relationship. Schema is pictured below: 
-(insert schema image here)
+(insert schema image here!)
