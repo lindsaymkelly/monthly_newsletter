@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/sign_up' => 'pages#sign_up'
+  post '/sign_up' => 'pages#send_sign_up'
+
+  get '/recipients' => 'pages#recipients'
+
+  root 'pages#sign_up'
 end
