@@ -3,22 +3,26 @@
   <h4> (Click on a column to sort by that field!) </h4>
 </div>
 <div class="container">
-  <table id="myTable2" class="table table-bordered"> 
-    <tr>
-      <th onclick="sortTable(0)"> First Name </th>
-      <th onclick="sortTable(1)"> Last Name </th>
-      <th onclick="sortTable(2)"> Email </th>
-      <th onclick="sortTable(3)"> Subscribed Since </th>
-    </tr>
-    <% @users.each do |user| %>
+  <% if !@users.empty? %>
+    <table id="myTable2" class="table table-bordered"> 
       <tr>
-        <td><%=user.firstname%></td>
-        <td><%=user.lastname%></td>
-        <td><%=user.email_address.email%></td>
-        <td><%=user.created_at.strftime("%b %d, %Y")%></td>
+        <th onclick="sortTable(0)"> First Name </th>
+        <th onclick="sortTable(1)"> Last Name </th>
+        <th onclick="sortTable(2)"> Email </th>
+        <th onclick="sortTable(3)"> Subscribed Since </th>
       </tr>
-    <% end %>
-  </table>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%=user.firstname%></td>
+          <td><%=user.lastname%></td>
+          <td><%=user.email_address.email%></td>
+          <td><%=user.created_at.strftime("%b %d, %Y")%></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <h4 class="text-center"> No monthly newsletter recipients added yet! </h4>
+  <% end %>
 </div>
 <br>
 <div class="container text-center">
