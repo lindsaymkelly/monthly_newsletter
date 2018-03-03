@@ -6,9 +6,16 @@ class PagesController < ApplicationController
 
   def send_sign_up
     @user = User.new(user_params)
-    if @user.save
-      new_email = EmailAddress.create(user: @user, email: params[:email])
-      redirect_to recipients_path
+    if @user.valid?
+      new_email = EmailAddress.new(user: @user, email: params[:email])
+      if new_email.valid?
+        @user.save
+        new_email.save
+        redirect_to recipients_path
+      else
+        @errors = @user.errors.full_messages && new_email.errors.full_messages
+        render 'sign_up'
+      end
     else
       @errors = @user.errors.full_messages
       render 'sign_up'
